@@ -4,15 +4,8 @@ import org.junit.Assert.*
 
 class MainKtTest {
 
-    @Test
-    fun calcCommissionMAESTROError() {
-        val MAESTRO ="Maestro"
-        var translateMonth  = 100_000
-        var translate = 76_000
 
-        val result = calcCommission(MAESTRO, translateMonth, translate)
-        assertEquals(0, result)
-    }
+
     @Test
     fun calcCommissionMAESTROTrue() {
         val MAESTRO ="Maestro"
@@ -23,14 +16,15 @@ class MainKtTest {
         assertEquals(620, result)
     }
     @Test
-    fun calcCommissionMASTERCARDError() {
-        val MASTERCARD = "MasterCard"
-        val translateMonth  = 0
+    fun calcCommissionMAESTROFalse() {
+        val MAESTRO ="Maestro"
+        val translateMonth  = 200_000
         val translate = 100_000
 
-        val result = calcCommission(MASTERCARD, translateMonth, translate)
+        val result = calcCommission(MAESTRO, translateMonth, translate)
         assertEquals(600, result)
     }
+
     @Test
     fun calcCommissionMASTERCARDTrue() {
         val MASTERCARD = "MasterCard"
@@ -41,14 +35,15 @@ class MainKtTest {
         assertEquals(476, result)
     }
     @Test
-    fun calcCommissionVISAError() {
-        val VISA = "VISA"
-        var translateMonth  = 500
-        var translate = 10_000
+    fun calcCommissionMASTERCARDFalse() {
+        val MASTERCARD = "MasterCard"
+        val translateMonth  = 0
+        val translate = 76_000
 
-        val result = calcCommission(VISA, translateMonth, translate)
-        assertEquals(35, result)
+        val result = calcCommission(MASTERCARD, translateMonth, translate)
+        assertEquals(470, result)
     }
+
     @Test
     fun calcCommissionVISATrue() {
         val VISA = "VISA"
@@ -58,16 +53,16 @@ class MainKtTest {
         val result = calcCommission(VISA, translateMonth, translate)
         assertEquals(375, result)
     }
-
     @Test
-    fun calcCommissionWorldError() {
-        val WORLD = "Мир"
-        var translateMonth  = 500
-        var translate = 80_000
+    fun calcCommissionVISAFalse() {
+        val VISA = "VISA"
+        var translateMonth  = 150_000
+        var translate = 50_000
 
-        val result = calcCommission(WORLD, translateMonth, translate)
-        assertEquals(35, result)
+        val result = calcCommission(VISA, translateMonth, translate)
+        assertEquals(370, result)
     }
+
     @Test
     fun calcCommissionWorldTrue() {
         val WORLD = "Мир"
@@ -78,14 +73,15 @@ class MainKtTest {
         assertEquals(150, result)
     }
     @Test
-    fun calcCommissionVK_PAYError() {
-        val VK_PAY = "VK Pay"
-        var translateMonth  = 500
-        var translate = 80_000
+    fun calcCommissionWorldFalse() {
+        val WORLD = "Мир"
+        var translateMonth  = 15_000
+        var translate = 20_000
 
-        val result = calcCommission(VK_PAY, translateMonth, translate)
-        assertEquals(35, result)
+        val result = calcCommission(WORLD, translateMonth, translate)
+        assertEquals(250, result)
     }
+
     @Test
     fun calcCommissionVK_PAYTrue() {
         val VK_PAY = "VK Pay"
@@ -95,5 +91,22 @@ class MainKtTest {
         val result = calcCommission(VK_PAY, translateMonth, translate)
         assertEquals(0, result)
     }
+    @Test
+    fun calcCommissionVK_PAYFalse() {
+        val VK_PAY = "VK Pay"
+        var translateMonth  = 15_000
+        var translate = 20_000
+
+        val result = calcCommission(VK_PAY, translateMonth, translate)
+        assertEquals(10, result)
+    }
+    @Test
+    fun printTranslateF() {
+    val VK_PAY = "VK Pay"
+        var translate = 20_000
+        val result = printTranslate(VK_PAY, translate)
+        assertEquals(100, result)
+    }
+
 }
 
