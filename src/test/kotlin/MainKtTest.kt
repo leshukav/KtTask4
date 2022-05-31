@@ -86,7 +86,16 @@ class MainKtTest {
     fun calcCommissionVK_PAYTrue() {
         val VK_PAY = "VK Pay"
         var translateMonth  = 15_000
-        var translate = 20_000
+        var translate = 5_000
+
+        val result = calcCommission(VK_PAY, translateMonth, translate)
+        assertEquals(0, result)
+    }
+    @Test
+    fun calcCommissionVK_PAYTrue1() {
+        val VK_PAY = "VK Pay"
+        var translateMonth  = 15_000
+        var translate = 10_000
 
         val result = calcCommission(VK_PAY, translateMonth, translate)
         assertEquals(0, result)
@@ -101,12 +110,24 @@ class MainKtTest {
         assertEquals(10, result)
     }
     @Test
-    fun printTranslateF() {
+    fun printTranslateVK() {
     val VK_PAY = "VK Pay"
         var translate = 20_000
         val result = printTranslate(VK_PAY, translate)
-        assertEquals(100, result)
     }
-
+    @Test
+    fun printTranslateMAESTRO() {
+        val MAESTRO = "MAESTRO"
+        var translate = 76_000
+        val result = printTranslate(MAESTRO, translate)
+    }
+    @Test
+    fun printTranslateMAESTROFalse() {
+        val MAESTRO ="Maestro"
+        val translateMonth  = 200_000
+        val translate = 700_000
+        calcCommission(MAESTRO, translateMonth, translate)
+        printTranslate(MAESTRO, translate)
+    }
 }
 
